@@ -27,7 +27,7 @@ ds_map_add(global.stats[? "Bob"], "DEF", 2);
 ```
 **With JSON Toolkit**
 ```
-var iap_map = JsonStruct(JsonMap(
+var global.stats = JsonStruct(JsonMap(
 	"Alice", JsonMap(
     	"HP", 5,
         "ATK", 5,

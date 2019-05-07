@@ -242,6 +242,19 @@
           <argCount>-1</argCount>
           <args/>
         </function>
+        <function>
+          <name>_json_dig</name>
+          <externalName>_json_dig</externalName>
+          <kind>11</kind>
+          <help>_json_dig(jsonstruct, @path, ignore_last_n)</help>
+          <returnType>2</returnType>
+          <argCount>3</argCount>
+          <args>
+            <arg>2</arg>
+            <arg>2</arg>
+            <arg>2</arg>
+          </args>
+        </function>
       </functions>
       <constants/>
     </file>

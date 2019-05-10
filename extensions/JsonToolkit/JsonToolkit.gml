@@ -728,13 +728,17 @@ for (var i = 2; i < spsiz; i++) {
         }
         current = current[? k];
     } else if (is_real(k)) {
+        if (_json_not_ds(current, ds_type_list)) {
+            path[@ 0] = -i;
+            return undefined;
+        }
         var current_list_size = ds_list_size(current);
-        if (_json_not_ds(current, ds_type_list) || k >= current_list_size || k < -current_list_size) {
-          path[@ 0] = -i;
-          return undefined;
+        if (k >= current_list_size || k < -current_list_size) {
+            path[@ 0] = -i;
+            return undefined;
         }
         if (k < 0) {
-          k += current_list_size;
+            k += current_list_size;
         }
         current = current[| k];
     } else {

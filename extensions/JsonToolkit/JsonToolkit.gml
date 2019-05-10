@@ -190,6 +190,15 @@ var k = path[pc];
 if (is_string(k) && !_json_not_ds(current, ds_type_map)) {
     current[? k] = argument[argument_count-1];
 } else if (is_real(k) && !_json_not_ds(current, ds_type_list)) {
+    if (k < 0) {
+        k += ds_list_size(current);
+        if (k < 0) {
+            if (single_real_path) {
+                return -1;
+            }
+            return -pc;
+        }
+    }
     current[| k] = argument[argument_count-1];
 } else {
     if (single_real_path) {
@@ -248,6 +257,15 @@ if (is_string(k) && !_json_not_ds(current, ds_type_map)) {
         ds_map_add_map(current, k, to_nest);
     }
 } else if (is_real(k) && !_json_not_ds(current, ds_type_list)) {
+    if (k < 0) {
+        k += ds_list_size(current);
+        if (k < 0) {
+            if (single_real_path) {
+                return -1;
+            }
+            return -pc;
+        }
+    }
     if (nested_is_list) {
         current[| k] = to_nest[? "default"];
         ds_list_mark_as_list(current, k);
@@ -307,6 +325,15 @@ if (is_string(k) && !_json_not_ds(current, ds_type_map)) {
     return 1;
 } else if (!_json_not_ds(current, ds_type_list)) {
     if (is_real(k)) {
+        if (k < 0) {
+            k += ds_list_size(current);
+            if (k < 0) {
+                if (single_real_path) {
+                    return -1;
+                }
+                return -pc;
+            }
+        }
         ds_list_insert(current, k, argument[argument_count-1]);
         return 1;
     } else if (is_undefined(k)) {
@@ -372,6 +399,15 @@ if (is_string(k) && !_json_not_ds(current, ds_type_map)) {
     return 1;
 } else if (!_json_not_ds(current, ds_type_list)) {
     if (is_real(k)) {
+        if (k < 0) {
+            k += ds_list_size(current);
+            if (k < 0) {
+                if (single_real_path) {
+                    return -1;
+                }
+                return -pc;
+            }
+        }
         if (nested_is_list) {
             ds_list_insert(current, k, ds_map_find_value(to_nest, "default"));
         } else {
@@ -440,12 +476,29 @@ if (path[0] <= 0) {
 }
 
 // Set the last layer and go
-if (is_string(k)) {
-    ds_map_delete(current, k);
-} else {
-    ds_list_delete(current, k);
+var k = path[pc];
+if (is_string(k) && !_json_not_ds(current, ds_type_map)) {
+    if (ds_map_exists(current, k)) {
+        ds_map_delete(current, k);
+        return 1;
+    }
+} else if (is_real(k) && !_json_not_ds(current, ds_type_list)) {
+    var current_list_size = ds_list_size(current);
+    if (k >= 0 && k < current_list_size) {
+        ds_list_delete(current, k);
+        return 1;
+    }
+    if (k < 0 && k >= -current_list_size) {
+        ds_list_delete(current, k+current_list_size);
+        return 1;
+    }
 }
-return 1;
+
+// Unset attempt failed
+if (single_real_path) {
+    return -1;
+}
+return -pc;
 
 
 #define json_clone
@@ -520,7 +573,7 @@ if (single_real_path) {
 // Stop if _json_dig() errors out
 var ds = _json_dig(argument[0], path, 0);
 if (path[0] <= 0) {
-    return path[0];
+    return undefined;
 }
 
 // Create the iterator
@@ -652,9 +705,13 @@ if (is_string(k)) {
         path[@ 0] = -1;
         return undefined;
     }
-    if (k >= ds_list_size(current)) {
+    var current_list_size = ds_list_size(current);
+    if (k >= current_list_size || k < -current_list_size) {
         path[@ 0] = -1;
         return undefined;
+    }
+    if (k < 0) {
+      k += current_list_size;
     }
     current = current[| k];
 } else {
@@ -671,9 +728,13 @@ for (var i = 2; i < spsiz; i++) {
         }
         current = current[? k];
     } else if (is_real(k)) {
-        if (_json_not_ds(current, ds_type_list) || k >= ds_list_size(current)) {
+        var current_list_size = ds_list_size(current);
+        if (_json_not_ds(current, ds_type_list) || k >= current_list_size || k < -current_list_size) {
           path[@ 0] = -i;
           return undefined;
+        }
+        if (k < 0) {
+          k += current_list_size;
         }
         current = current[| k];
     } else {

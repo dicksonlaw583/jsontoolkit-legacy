@@ -12,6 +12,7 @@
   <paths name="paths"/>
   <scripts name="scripts">
     <scripts name="JsonToolkitTests">
+      <script>scripts\Array.gml</script>
       <script>scripts\json_test_all.gml</script>
       <script>scripts\json_test_extra_encodes.gml</script>
       <script>scripts\json_test_extras.gml</script>

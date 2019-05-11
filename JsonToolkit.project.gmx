@@ -5,6 +5,7 @@
   </Configs>
   <NewExtensions>
     <extension index="0">extensions\JsonToolkit</extension>
+    <extension index="1">extensions\GMAssert</extension>
   </NewExtensions>
   <sounds name="sound"/>
   <sprites name="sprites"/>
@@ -12,6 +13,7 @@
   <paths name="paths"/>
   <scripts name="scripts">
     <scripts name="JsonToolkitTests">
+      <script>scripts\Array.gml</script>
       <script>scripts\json_test_all.gml</script>
       <script>scripts\json_test_extra_encodes.gml</script>
       <script>scripts\json_test_extras.gml</script>
@@ -29,61 +31,11 @@
     </scripts>
     <scripts name="GMAssert">
       <script>scripts\__GMA_BREAKPOINT__.gml</script>
-      <script>scripts\__gma_assert_error__.gml</script>
-      <script>scripts\__gma_assert_error_simple__.gml</script>
-      <script>scripts\__gma_assert_error_raw__.gml</script>
-      <script>scripts\__gma_debug_type__.gml</script>
-      <script>scripts\__gma_debug_value__.gml</script>
-      <script>scripts\__gma_debug_list_value__.gml</script>
-      <script>scripts\__gma_equal__.gml</script>
-      <script>scripts\__gma_equalish__.gml</script>
-      <script>scripts\__gma_greater_than__.gml</script>
-      <script>scripts\__gma_less_than__.gml</script>
-      <script>scripts\__gma_greater_than_or_equal__.gml</script>
-      <script>scripts\__gma_less_than_or_equal__.gml</script>
-      <script>scripts\assert.gml</script>
-      <script>scripts\assert_fail.gml</script>
-      <script>scripts\assert_equal.gml</script>
-      <script>scripts\assert_equalish.gml</script>
-      <script>scripts\assert_is.gml</script>
-      <script>scripts\assert_not_equal.gml</script>
-      <script>scripts\assert_not_equalish.gml</script>
-      <script>scripts\assert_isnt.gml</script>
-      <script>scripts\assert_greater_than.gml</script>
-      <script>scripts\assert_less_than.gml</script>
-      <script>scripts\assert_greater_than_or_equal.gml</script>
-      <script>scripts\assert_less_than_or_equal.gml</script>
-      <script>scripts\assert_is_string.gml</script>
-      <script>scripts\assert_is_real.gml</script>
-      <script>scripts\assert_is_array.gml</script>
-      <script>scripts\assert_is_defined.gml</script>
-      <script>scripts\assert_isnt_string.gml</script>
-      <script>scripts\assert_isnt_real.gml</script>
-      <script>scripts\assert_isnt_array.gml</script>
-      <script>scripts\assert_isnt_defined.gml</script>
-      <script>scripts\assert_in_range.gml</script>
-      <script>scripts\assert_not_in_range.gml</script>
-      <script>scripts\assert_contains.gml</script>
-      <script>scripts\assert_contains_exact.gml</script>
-      <script>scripts\assert_doesnt_contain.gml</script>
-      <script>scripts\assert_doesnt_contain_exact.gml</script>
     </scripts>
   </scripts>
   <rooms name="rooms">
     <room>rooms\rm_test</room>
   </rooms>
-  <constants number="10">
-    <constant name="GMASSERT_MODE">GMASSERT_MODE_ENABLED</constant>
-    <constant name="GMASSERT_MODE_DISABLED">0</constant>
-    <constant name="GMASSERT_MODE_SELFTEST">1</constant>
-    <constant name="GMASSERT_MODE_ENABLED">2</constant>
-    <constant name="GMASSERT_TOLERANCE">0.0000001</constant>
-    <constant name="GMASSERT_TYPE_UNDEFINED">0</constant>
-    <constant name="GMASSERT_TYPE_REAL">1</constant>
-    <constant name="GMASSERT_TYPE_STRING">2</constant>
-    <constant name="GMASSERT_TYPE_ARRAY">3</constant>
-    <constant name="GMASSERT_TYPE_UNKNOWN">-1</constant>
-  </constants>
   <help>
     <rtf>help.rtf</rtf>
   </help>

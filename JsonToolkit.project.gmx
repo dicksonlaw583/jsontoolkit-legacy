@@ -28,6 +28,7 @@
       <script>scripts\json_test_destroy.gml</script>
       <script>scripts\json_test_iterators.gml</script>
       <script>scripts\json_test_load_save.gml</script>
+      <script>scripts\json_test_load_save_encrypted.gml</script>
     </scripts>
     <scripts name="GMAssert">
       <script>scripts\__GMA_BREAKPOINT__.gml</script>

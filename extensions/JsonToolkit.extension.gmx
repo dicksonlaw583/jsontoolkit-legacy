@@ -3,7 +3,7 @@
   <name>JsonToolkit</name>
   <version>1.1.0</version>
   <packageID></packageID>
-  <ProductID>ACBD3CFF4E539AD869A0E8E3B4B022DD</ProductID>
+  <ProductID></ProductID>
   <date>07/02/19</date>
   <license>Free to use, also for commercial games.</license>
   <description></description>
@@ -247,6 +247,93 @@
             <arg>2</arg>
             <arg>2</arg>
             <arg>2</arg>
+          </args>
+        </function>
+        <function>
+          <name>_json_rc4</name>
+          <externalName>_json_rc4</externalName>
+          <kind>11</kind>
+          <help>_json_rc4(@buffer, key, offset, length)</help>
+          <returnType>1</returnType>
+          <argCount>4</argCount>
+          <args>
+            <arg>2</arg>
+            <arg>1</arg>
+            <arg>2</arg>
+            <arg>2</arg>
+          </args>
+        </function>
+        <function>
+          <name>_json_rc4_decrypt_string</name>
+          <externalName>_json_rc4_decrypt_string</externalName>
+          <kind>11</kind>
+          <help>_json_rc4_decrypt_string(str, key)</help>
+          <returnType>1</returnType>
+          <argCount>2</argCount>
+          <args>
+            <arg>1</arg>
+            <arg>1</arg>
+          </args>
+        </function>
+        <function>
+          <name>_json_rc4_encrypt_string</name>
+          <externalName>_json_rc4_encrypt_string</externalName>
+          <kind>11</kind>
+          <help>_json_rc4_encrypt_string(str, key)</help>
+          <returnType>1</returnType>
+          <argCount>2</argCount>
+          <args>
+            <arg>1</arg>
+            <arg>1</arg>
+          </args>
+        </function>
+        <function>
+          <name>json_encrypt</name>
+          <externalName>json_encrypt</externalName>
+          <kind>11</kind>
+          <help>json_encrypt(jsonstruct, key)</help>
+          <returnType>1</returnType>
+          <argCount>2</argCount>
+          <args>
+            <arg>2</arg>
+            <arg>1</arg>
+          </args>
+        </function>
+        <function>
+          <name>json_decrypt</name>
+          <externalName>json_decrypt</externalName>
+          <kind>11</kind>
+          <help>json_decrypt(jsonencstr, key)</help>
+          <returnType>2</returnType>
+          <argCount>2</argCount>
+          <args>
+            <arg>1</arg>
+            <arg>1</arg>
+          </args>
+        </function>
+        <function>
+          <name>json_save_encrypted</name>
+          <externalName>json_save_encrypted</externalName>
+          <kind>11</kind>
+          <help>json_save_encrypted(fname, jsonstruct, key)</help>
+          <returnType>2</returnType>
+          <argCount>3</argCount>
+          <args>
+            <arg>1</arg>
+            <arg>2</arg>
+            <arg>1</arg>
+          </args>
+        </function>
+        <function>
+          <name>json_load_encrypted</name>
+          <externalName>json_load_encrypted</externalName>
+          <kind>11</kind>
+          <help>json_load_encrypted(fname, key)</help>
+          <returnType>2</returnType>
+          <argCount>2</argCount>
+          <args>
+            <arg>1</arg>
+            <arg>1</arg>
           </args>
         </function>
       </functions>

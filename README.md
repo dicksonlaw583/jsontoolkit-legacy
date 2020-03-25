@@ -1,4 +1,4 @@
-# JSON Toolkit for GMS 1.4 - v0.0.1
+# JSON Toolkit for GMS 1.4 - v1.1.1
 
 ## Overview
 JSON Toolkit is a set of companion scripts facilitating the use of GML's built in `json_encode()` and `json_decode()` functions. It contains utilities for visually building JSON structure, accessing and manipulating deeply nested values, iterating through a JSON structure, and saving/loading JSON data in files. With JSON Toolkit, many common JSON operations that would otherwise take several lines, intermediate values and repetitions in conventional GML can be shortened into concise, easy-to-read one-liners.
